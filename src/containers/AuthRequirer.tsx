@@ -19,7 +19,10 @@ const AuthRequirer = ({ children }: Props) => {
       return;
     }
 
-    navigation.navigate("SignIn");
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Authenticate" }],
+    });
   }, [hasInitialized, isAuthenticated]);
 
   if (!hasInitialized) {

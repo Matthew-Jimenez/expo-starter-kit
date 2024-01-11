@@ -1,11 +1,11 @@
 import { View, Text, Button } from "react-native";
 
 import SignUpFormContainer from "../../containers/SignUpFormContainer";
-import { useRootNavigation } from "../../navigation/useNavigation";
+import { useUnauthenticatedNavigation } from "../../navigation/useNavigation";
 import SignUpProvider from "../../providers/SignUpProvider";
 
 const SignUpScreen = () => {
-  const nav = useRootNavigation();
+  const nav = useUnauthenticatedNavigation();
 
   return (
     <SignUpProvider>

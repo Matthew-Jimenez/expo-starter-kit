@@ -25,6 +25,11 @@ class AuthenticationService {
     // Implement your login logic here
     Alert.alert("Login", `Username: ${username}, Password: ${password}`);
 
+    this.user = {
+      username: username!,
+      email: "hi",
+    };
+
     setTimeout(() => {
       runInAction(() => {
         this.loading = false;
@@ -34,6 +39,7 @@ class AuthenticationService {
 
   async logout(): Promise<void> {
     // Implement your logout logic here
+    this.user = null;
   }
 
   async initialize(): Promise<void> {

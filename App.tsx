@@ -1,21 +1,26 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import AuthRequirer from "./src/containers/AuthRequirer";
 import MainScreenStack from "./src/screens/MainScreenStack";
 import UnauthenticatedScreenStack from "./src/screens/UnauthenticatedStack/UnauthenticatedScreenStack";
+
+const RootStack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
-          <UnauthenticatedScreenStack />
+          <RootStack.Navigator>
+            <RootStack.Screen name="Home" component={MainScreenStack} />
 
-          <AuthRequirer>
-            <MainScreenStack />
-          </AuthRequirer>
+            <RootStack.Screen
+              name="Authenticate"
+              component={UnauthenticatedScreenStack}
+            />
+          </RootStack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
     </SafeAreaProvider>
