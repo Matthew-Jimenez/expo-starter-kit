@@ -1,5 +1,6 @@
 // src/services/AuthenticationService.ts
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
+import { Alert } from "react-native";
 
 interface User {
   username: string;
@@ -19,8 +20,16 @@ class AuthenticationService {
     this.initialize();
   }
 
-  async login(username: string, password: string): Promise<void> {
+  async login(username?: string, password?: string): Promise<void> {
+    this.loading = true;
     // Implement your login logic here
+    Alert.alert("Login", `Username: ${username}, Password: ${password}`);
+
+    setTimeout(() => {
+      runInAction(() => {
+        this.loading = false;
+      });
+    }, 2000);
   }
 
   async logout(): Promise<void> {
