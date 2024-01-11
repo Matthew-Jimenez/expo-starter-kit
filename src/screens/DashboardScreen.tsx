@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { View, Text } from "react-native";
 
 const Dashboard = () => {
@@ -8,4 +9,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default observer(Dashboard);
