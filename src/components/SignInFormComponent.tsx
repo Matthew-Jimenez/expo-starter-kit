@@ -1,4 +1,4 @@
-import { Button, TextInput, View } from "react-native";
+import { Button, TextInput, View, Text, StyleSheet } from "react-native";
 
 interface Props {
   email?: string;
@@ -7,6 +7,7 @@ interface Props {
   setPassword?: (password: string) => void;
   onSubmit?: () => void;
   loading?: boolean;
+  errorMessage?: string;
 }
 
 const SignInFormComponent = ({
@@ -16,6 +17,7 @@ const SignInFormComponent = ({
   setPassword,
   onSubmit,
   loading,
+  errorMessage,
 }: Props) => {
   return (
     <View>
@@ -36,6 +38,8 @@ const SignInFormComponent = ({
         }}
         focusable={!loading}
       />
+
+      {errorMessage && <Text>{errorMessage}</Text>}
 
       <Button
         title={loading ? "Authenticating" : "Sign In"}

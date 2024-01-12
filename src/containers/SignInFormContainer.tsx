@@ -21,14 +21,17 @@ const SignInFormContainer = () => {
   }, [model.authService.user]);
 
   return (
-    <SignInFormComponent
-      email={model.email.value}
-      password={model.password.value}
-      setEmail={model.email.setValue}
-      setPassword={model.password.setValue}
-      onSubmit={model.signIn}
-      loading={model.authService.loading}
-    />
+    <>
+      <SignInFormComponent
+        email={model.email.value}
+        password={model.password.value}
+        setEmail={model.email.setValue}
+        setPassword={model.password.setValue}
+        onSubmit={model.signIn}
+        loading={model.loading.value}
+        errorMessage={model.signInError.value}
+      />
+    </>
   );
 };
 

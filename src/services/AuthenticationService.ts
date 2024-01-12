@@ -49,21 +49,19 @@ class AuthenticationService {
   };
 
   async login(username?: string, password?: string): Promise<void> {
-    this.loading = true;
-
-    if (!username || !password) {
-      return Alert.alert("Error", "Email or password is empty");
+    if (!username && !password) {
+      throw new Error("Username and password are required");
     }
 
-    try {
-      await fbAuth().signInWithEmailAndPassword(username, password);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      runInAction(() => {
-        this.loading = false;
-      });
+    if (!username) {
+      throw new Error("Username is required");
     }
+
+    if (!password) {
+      throw new Error("Password is required");
+    }
+
+    await fbAuth().signInWithEmailAndPassword(username, password);
   }
 
   async logout(): Promise<void> {
