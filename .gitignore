@@ -9,6 +9,13 @@ dist/
 web-build/
 
 # Native
+ios/
+android/
+GoogleService-Info.plist
+google-services.json
+
+
+# Native
 *.orig.*
 *.jks
 *.p8
