@@ -1,4 +1,6 @@
-import { Button, TextInput, View } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import { Button, TextInput, View, Text, StyleSheet } from "react-native";
 
 interface Props {
   email?: string;
@@ -9,6 +11,7 @@ interface Props {
   setConfirmPassword?: (confirmPassword: string) => void;
   onSubmit?: () => void;
   loading?: boolean;
+  errorMessage?: string;
 }
 
 const SignUpFormComponent = ({
@@ -20,7 +23,25 @@ const SignUpFormComponent = ({
   setConfirmPassword,
   onSubmit,
   loading,
+  errorMessage,
 }: Props) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  useEffect(() => {
+    if (!confirmPassword) {
+      setPasswordsMatch(true);
+      return;
+    }
+
+    setPasswordsMatch(password === confirmPassword);
+  }, [password, confirmPassword]);
+
   return (
     <View>
       <TextInput
@@ -32,23 +53,59 @@ const SignUpFormComponent = ({
         focusable={!loading}
       />
 
-      <TextInput
-        placeholder="password"
-        value={password}
-        onChange={(e) => {
-          setPassword?.(e.nativeEvent.text);
-        }}
-        focusable={!loading}
-      />
+      <View style={styles.inputRow}>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              borderColor: passwordsMatch ? "black" : "red",
+              borderWidth: 1,
+            },
+          ]}
+          placeholder="password"
+          value={password}
+          onChange={(e) => {
+            setPassword?.(e.nativeEvent.text);
+          }}
+          focusable={!loading}
+          secureTextEntry={!showPassword}
+        />
 
-      <TextInput
-        placeholder="confirm password"
-        value={confirmPassword}
-        onChange={(e) => {
-          setConfirmPassword?.(e.nativeEvent.text);
-        }}
-        focusable={!loading}
-      />
+        <Feather
+          onPress={toggleShowPassword}
+          name={showPassword ? "eye-off" : "eye"}
+          size={17}
+          color="black"
+        />
+      </View>
+
+      <View style={styles.inputRow}>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              borderColor: passwordsMatch ? "black" : "red",
+              borderWidth: 1,
+            },
+          ]}
+          placeholder="confirm password"
+          value={confirmPassword}
+          onChange={(e) => {
+            setConfirmPassword?.(e.nativeEvent.text);
+          }}
+          focusable={!loading}
+          secureTextEntry={!showPassword}
+        />
+
+        <Feather
+          onPress={toggleShowPassword}
+          name={showPassword ? "eye-off" : "eye"}
+          size={17}
+          color="black"
+        />
+      </View>
+
+      {errorMessage && <Text>{errorMessage}</Text>}
 
       <Button
         title={loading ? "Registering" : "Sign Up"}
@@ -58,5 +115,14 @@ const SignUpFormComponent = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  inputRow: {
+    flexDirection: "row",
+  },
+  input: {
+    flex: 1,
+  },
+});
 
 export default SignUpFormComponent;

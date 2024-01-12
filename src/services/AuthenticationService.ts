@@ -27,25 +27,10 @@ class AuthenticationService {
 
   public signup = async (email?: string, password?: string) => {
     if (!email || !password) {
-      return Alert.alert("Error", "Email or password is empty");
+      throw new Error("Email and password are required");
     }
 
-    return await fbAuth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log("User account created & signed in!", user);
-      })
-      .catch((error) => {
-        if (error.code === "auth/email-already-in-use") {
-          console.log("That email address is already in use!");
-        }
-
-        if (error.code === "auth/invalid-email") {
-          console.log("That email address is invalid!");
-        }
-
-        console.error(error);
-      });
+    return await fbAuth().createUserWithEmailAndPassword(email, password);
   };
 
   async login(username?: string, password?: string): Promise<void> {
