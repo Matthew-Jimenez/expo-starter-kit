@@ -25,6 +25,10 @@ class AuthenticationService {
     });
   }
 
+  public setUser = (user: FirebaseAuthTypes.User | null) => {
+    this.user = user;
+  };
+
   public signup = async (email?: string, password?: string) => {
     if (!email || !password) {
       throw new Error("Email and password are required");
