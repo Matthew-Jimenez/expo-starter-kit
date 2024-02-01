@@ -9,7 +9,7 @@ const SignInScreen = () => {
 
   return (
     <SignInProvider>
-      <View>
+      <View testID="sign-in-screen">
         <Text>Sign In Screen</Text>
 
         <Form />

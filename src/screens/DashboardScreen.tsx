@@ -10,7 +10,7 @@ const Dashboard = () => {
   };
 
   return (
-    <View>
+    <View testID="home-screen">
       <Text>Dashboard</Text>
 
       <Text>Welcome {AuthenticationService.user?.email}</Text>

@@ -22,6 +22,7 @@ const SignInFormComponent = ({
   return (
     <View>
       <TextInput
+        testID="sign-in-email-input"
         placeholder="email"
         value={email}
         onChange={(e) => {
@@ -31,6 +32,7 @@ const SignInFormComponent = ({
       />
 
       <TextInput
+        testID="sign-in-password-input"
         placeholder="password"
         value={password}
         onChange={(e) => {
@@ -42,6 +44,7 @@ const SignInFormComponent = ({
       {errorMessage && <Text>{errorMessage}</Text>}
 
       <Button
+        testID="sign-in-submit-button"
         title={loading ? "Authenticating" : "Sign In"}
         onPress={onSubmit}
         disabled={loading}
