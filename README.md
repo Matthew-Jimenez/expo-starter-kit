@@ -23,6 +23,16 @@ Solution: Go to the Authentication tab in projects firebase console and enable g
 This project uses [react-navigation/native](https://reactnavigation.org/docs/getting-started/) & [@react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator/) to handle navigation
 
 ## E2E testing (Detox)
+
+Download your own firebase admin service key and place in the e2e folder
+e2e/firebaseadmin-privatekey
+
+link to generating new service key, select the current project
+https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk
+
+
+Add this to your Expo Project Secrets too
+
 Build with EAS and e2e testing
 `eas build -p ios -e test`
 

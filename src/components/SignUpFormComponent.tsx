@@ -45,6 +45,7 @@ const SignUpFormComponent = ({
   return (
     <View>
       <TextInput
+        testID="signup-email-input"
         placeholder="email"
         value={email}
         onChange={(e) => {
@@ -55,6 +56,7 @@ const SignUpFormComponent = ({
 
       <View style={styles.inputRow}>
         <TextInput
+          testID="signup-password-input"
           style={[
             styles.input,
             {
@@ -81,6 +83,7 @@ const SignUpFormComponent = ({
 
       <View style={styles.inputRow}>
         <TextInput
+          testID="signup-confirm-password-input"
           style={[
             styles.input,
             {
@@ -108,6 +111,7 @@ const SignUpFormComponent = ({
       {errorMessage && <Text>{errorMessage}</Text>}
 
       <Button
+        testID="signup-submit-button"
         title={loading ? "Registering" : "Sign Up"}
         onPress={onSubmit}
         disabled={loading}

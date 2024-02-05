@@ -43,3 +43,4 @@ yarn-error.*
 
 #detox
 artifacts/
+e2e/firebaseadmin-privatekey.json
