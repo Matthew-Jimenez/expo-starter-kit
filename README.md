@@ -22,50 +22,16 @@ Solution: Go to the Authentication tab in projects firebase console and enable g
 ## Navigation
 This project uses [react-navigation/native](https://reactnavigation.org/docs/getting-started/) & [@react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator/) to handle navigation
 
+## E2E testing (Detox)
+Build with EAS and e2e testing
+`eas build -p ios -e test`
 
-{
-  "expo": {
-    "name": "expo-starter-kit",
-    "slug": "expo-starter-kit",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.mattzj.expostarterkit",
-      "googleServicesFile": "./GoogleService-Info.plist"
-    },
-    "android": {
-      "googleServicesFile": "./google-services.json",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.mattzj.expostarterkit"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth",
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ]
-    ]
-  }
-}
+Build app locally
+`npm run e2e:ios:debug:build`
+
+Test with Detox locally
+`npm run:detox:local`
+
+## Expo 
+### Development Builds
+

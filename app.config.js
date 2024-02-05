@@ -1,5 +1,11 @@
 export default {
   expo: {
+    updates: {
+      url: "https://u.expo.dev/4156e5dc-910e-4f88-9079-8fa51399ff62",
+    },
+    runtimeVersion: {
+      policy: "appVersion",
+    },
     extra: {
       eas: {
         projectId: "4156e5dc-910e-4f88-9079-8fa51399ff62",
@@ -38,6 +44,7 @@ export default {
     plugins: [
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
+      "@config-plugins/detox",
       [
         "expo-build-properties",
         {

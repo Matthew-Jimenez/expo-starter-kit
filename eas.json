@@ -17,6 +17,31 @@
     "preview": {
       "distribution": "internal"
     },
+    "test": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+        "withoutCredentials": true
+      },
+      "ios": {
+        "simulator": true
+      },
+      "buildArtifactPaths": ["artifacts/**/*.png"]
+    },
+    "test_debug": {
+      "developmentClient": true,
+      "android": {
+        "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug",
+        "withoutCredentials": true
+      },
+      "ios": {
+        "buildConfiguration": "Debug",
+        "simulator": true
+      },
+      "env": {
+        "EXPO_USE_UPDATES": "1"
+      },
+      "channel": "test_debug"
+    },
     "production": {}
   },
   "submit": {
