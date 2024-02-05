@@ -17,7 +17,11 @@ const Dashboard = () => {
 
       <EmailVerified />
 
-      <Button title="Logout" onPress={handleLogout} />
+      <Button
+        testID="home-screen-logout-button"
+        title="Logout"
+        onPress={handleLogout}
+      />
     </View>
   );
 };

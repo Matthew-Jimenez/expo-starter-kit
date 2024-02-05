@@ -9,14 +9,18 @@ const SignInScreen = () => {
 
   return (
     <SignInProvider>
-      <View testID="sign-in-screen">
+      <View testID="signin-screen">
         <Text>Sign In Screen</Text>
 
         <Form />
 
         <Text>Don't have an account?</Text>
 
-        <Button title="Sign Up" onPress={() => nav.navigate("SignUp")} />
+        <Button
+          testID="signin-screen-signup-button"
+          title="Sign Up"
+          onPress={() => nav.navigate("SignUp")}
+        />
       </View>
     </SignInProvider>
   );
