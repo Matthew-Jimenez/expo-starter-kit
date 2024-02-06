@@ -32,14 +32,14 @@ const EmailVerifiedStatus = ({
   }
 
   return (
-    <View>
-      <Pressable onPress={toggleModal}>
+    <View testID="verify-email-component">
+      <Pressable testID="send-email-button" onPress={toggleModal}>
         <Text>Verify your email!</Text>
       </Pressable>
 
       <Modal animationType="slide" transparent visible={modalVisible}>
         <View style={styles.modal}>
-          <View style={styles.card}>
+          <View testID="send-email-success-view" style={styles.card}>
             <Text>We just sent you an email!</Text>
             <Text>Click the link in the email to verify your account.</Text>
           </View>
@@ -47,7 +47,7 @@ const EmailVerifiedStatus = ({
       </Modal>
 
       <Modal animationType="slide" transparent visible={displaySuccess}>
-        <View style={styles.modal}>
+        <View testID="verify-success-view" style={styles.modal}>
           <View style={styles.card}>
             <Text>Your email has been verified!</Text>
 
