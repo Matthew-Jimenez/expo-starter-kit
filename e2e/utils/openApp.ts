@@ -16,15 +16,11 @@ module.exports.openApp = async function openApp() {
 };
 
 async function openAppForDebugBuild(platform: string) {
-  console.log("Opening app for debug build");
-
   const deepLinkUrl = process.env.EXPO_USE_UPDATES
     ? // Testing latest published EAS update for the test_debug channel
       getDeepLinkUrl(getLatestUpdateUrl())
     : // Local testing with packager
       getDeepLinkUrl(getDevLauncherPackagerUrl(platform));
-
-  console.log("did not open app with deeplink", deepLinkUrl);
 
   if (platform === "ios") {
     await device.launchApp({
@@ -44,21 +40,21 @@ async function openAppForDebugBuild(platform: string) {
   await sleep(3000);
 }
 
-// URL should start with `expo+<app-slug>://`
 const getDeepLinkUrl = (url: string) => {
-  console.log("getDeepLinkUrl", url);
   return `expo+expo-starter-kit://expo-development-client/?url=${encodeURIComponent(
     url,
   )}`;
 };
 
 const getDevLauncherPackagerUrl = (platform: string) => {
-  console.log("getDevLauncherPackagerUrl", platform);
+  if (platform === "android" && !process.env.GOOGLE_SERVICES_PLIST) {
+    return `http://10.0.2.2:8081?dev=true&minify=false&disableOnboarding=1`;
+  }
+
   return `http://localhost:8081?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;
 };
 
 const getLatestUpdateUrl = () => {
-  console.log("getLatestUpdateUrl");
   return `https://u.expo.dev/${getAppId()}?channel-name=test_debug&disableOnboarding=1`;
 };
 

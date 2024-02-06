@@ -9,6 +9,8 @@
     "web": "expo start --web",
     "e2e:ios:debug:build": "detox build -c ios.debug",
     "run:detox:local": "detox test --configuration ios.debug",
+    "e2e:android:debug:build": "detox build -c android.debug",
+    "android:detox:local": "detox test --configuration android.debug",
     "eas-build-pre-install": "./eas-hooks/eas-build-pre-install.sh",
     "eas-build-on-success": "./eas-hooks/eas-build-on-success.sh"
   },
